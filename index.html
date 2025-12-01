@@ -49,7 +49,7 @@
       position: absolute;
       right: 0;
       background-color: #111;
-      min-width: 150px;
+      min-width: 180px;
       box-shadow: 0 4px 10px rgba(212,175,55,0.3);
       border-radius: 8px;
       z-index: 1;
@@ -65,6 +65,17 @@
 
   /* MAIN CONTAINER */
   .container { width: 90%; max-width: 1200px; margin: auto; padding: 40px 0; }
+
+  /* ABOUT US SECTION */
+  .about {
+    background: rgba(17,17,17,0.9);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(212,175,55,0.2);
+    margin-bottom: 40px;
+  }
+  .about h2 { margin-top: 0; font-size: 2em; }
+  .about p { font-size: 1.1em; line-height: 1.6; }
 
   /* PRODUCT GRID */
   .products {
@@ -122,6 +133,7 @@
     <button class="dropbtn">Menu ▼</button>
     <div class="dropdown-content">
       <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
       <a href="login.html">Login</a>
       <a href="cart.html">Cart</a>
     </div>
@@ -129,31 +141,41 @@
 </header>
 
 <div class="container">
+
+  <!-- ABOUT US SECTION -->
+  <div class="about">
+    <h2>About Us</h2>
+    <p>Welcome to <strong>MMI Box Company</strong>, your premium source for high-quality, customizable storage and subscription boxes. Our mission is to provide durable, stylish, and practical solutions for individuals and businesses alike. Whether you’re looking for a sleek packaging solution, a collector’s subscription box, or a custom order for your brand, MMI Boxes combine functionality with elegance.</p>
+    <p>Founded with a passion for quality craftsmanship, we take pride in every box we create. Each product is carefully designed to offer maximum durability while maintaining a modern, luxurious aesthetic. At MMI Box Company, we are committed to delivering exceptional service and products that exceed expectations.</p>
+    <p>Experience the perfect blend of style, utility, and quality — discover MMI Boxes today!</p>
+  </div>
+
+  <!-- FEATURED PRODUCTS -->
   <h2>Featured Products</h2>
   <div class="products">
 
     <!-- PRODUCT 1 -->
     <div class="product">
       <img src="https://via.placeholder.com/300" alt="">
-      <h3>Sample Product 1</h3>
-      <p>£9.99</p>
-      <button onclick="addToCart('Sample Product 1', 9.99, 'prod_1')">Add to Cart</button>
+      <h3>Premium Storage Box</h3>
+      <p>£24.99</p>
+      <button onclick="addToCart('Premium Storage Box', 24.99, 'prod_1')">Add to Cart</button>
     </div>
 
     <!-- PRODUCT 2 -->
     <div class="product">
       <img src="https://via.placeholder.com/300" alt="">
-      <h3>Sample Product 2</h3>
-      <p>£14.99</p>
-      <button onclick="addToCart('Sample Product 2', 14.99, 'prod_2')">Add to Cart</button>
+      <h3>Collector’s Box</h3>
+      <p>£39.99</p>
+      <button onclick="addToCart('Collector’s Box', 39.99, 'prod_2')">Add to Cart</button>
     </div>
 
     <!-- PRODUCT 3 -->
     <div class="product">
       <img src="https://via.placeholder.com/300" alt="">
-      <h3>Sample Product 3</h3>
-      <p>£19.99</p>
-      <button onclick="addToCart('Sample Product 3', 19.99, 'prod_3')">Add to Cart</button>
+      <h3>Custom Subscription Box</h3>
+      <p>£49.99</p>
+      <button onclick="addToCart('Custom Subscription Box', 49.99, 'prod_3')">Add to Cart</button>
     </div>
 
   </div>
@@ -163,6 +185,7 @@
   &copy; 2025 MMI Store. All rights reserved.
   <br>
   <a href="index.html">Home</a> | 
+  <a href="products.html">Products</a> |
   <a href="login.html">Login</a> | 
   <a href="cart.html">Cart</a>
 </footer>
