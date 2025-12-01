@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MMI Store – Account</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin:0;
+    background:#111 url('https://www.transparenttextures.com/patterns/carbon-fibre.png') repeat;
+    color:#d4af37;
+}
+a { color:#d4af37; text-decoration:none; }
+a:hover { text-decoration: underline; }
+
+header {
+    display:flex; justify-content:space-between; align-items:center;
+    padding:20px 40px; background:rgba(17,17,17,0.95);
+    box-shadow:0 2px 10px rgba(212,175,55,0.2);
+}
+header h1 { margin:0; font-size:2em; letter-spacing:2px; }
+
+.dropdown { position:relative; display:inline-block; }
+.dropbtn {
+    background-color:#d4af37; color:#000;
+    padding:10px 20px; font-size:1em; font-weight:700;
+    border:none; border-radius:8px; cursor:pointer;
+}
+.dropbtn:hover { background:#c19c32; }
+.dropdown-content {
+    display:none; position:absolute; right:0;
+    background-color:#111; min-width:180px;
+    box-shadow:0 4px 10px rgba(212,175,55,0.3); border-radius:8px; z-index:1;
+}
+.dropdown-content a { color:#d4af37; padding:12px 16px; text-decoration:none; display:block; }
+.dropdown-content a:hover { background-color:#222; }
+.dropdown:hover .dropdown-content { display:block; }
+
+.container { width:90%; max-width:1000px; margin:auto; padding:40px 0; }
+
+h2 { text-align:center; margin-bottom:30px; }
+
+.account-info, .orders { 
+    background: rgba(17,17,17,0.9);
+    padding:30px; border-radius:15px;
+    box-shadow:0 4px 15px rgba(212,175,55,0.2);
+    margin-bottom:30px;
+}
+
+.account-info p { font-size:1.1em; margin:10px 0; }
+
+.orders table { width:100%; border-collapse: collapse; }
+.orders th, .orders td { padding:12px; border-bottom:1px solid #222; text-align:left; }
+.orders th { background:#222; }
+
+button.logout {
+    background:#d4af37; color:#000; border:none; padding:10px 20px;
+    border-radius:8px; font-weight:700; cursor:pointer; margin-top:15px;
+}
+button.logout:hover { background:#c19c32; }
+
+footer {
+    text-align:center; padding:30px 20px;
+    background:rgba(17,17,17,0.95); color:#888; font-size:0.9em; border-top:1px solid #222;
+}
+footer a { margin:0 10px; color:#d4af37; font-weight:600; }
+footer a:hover { color:#c19c32; }
+
+</style>
+</head>
+<body>
+
+<header>
+<h1><a href="index.html" style="color:#d4af37; text-decoration:none;">MMI Store</a></h1>
+<div class="dropdown">
+    <button class="dropbtn">Menu ▼</button>
+    <div class="dropdown-content">
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="login.html">Login</a>
+      <a href="cart.html">Cart</a>
+    </div>
+</div>
+</header>
+
+<div class="container">
+  <h2>Welcome to Your Account</h2>
+
+  <div class="account-info">
+    <p><strong>Name:</strong> <span id="userName"></span></p>
+    <p><strong>Email:</strong> <span id="userEmail"></span></p>
+    <button class="logout" onclick="logout()">Logout</button>
+  </div>
+
+  <div class="orders">
+    <h3>Your Orders</h3>
+    <table id="ordersTable">
+      <tr>
+        <th>Product</th>
+        <th>Price</th>
+      </tr>
+    </table>
+    <p><strong>Total:</strong> £<span id="totalAmount">0.00</span></p>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 MMI Store. All rights reserved.
+  <br>
+  <a href="index.html">Home</a> | 
+  <a href="products.html">Products</a> |
+  <a href="login.html">Login</a> | 
+  <a href="cart.html">Cart</a>
+</footer>
+
+<script>
+// Load current user
+let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+if(!currentUser){
+    alert('You are not logged in!');
+    window.location.href = 'login.html';
+} else {
+    document.getElementById('userName').textContent = currentUser.name;
+    document.getElementById('userEmail').textContent = currentUser.email;
+}
+
+// Load cart/orders
+let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+const ordersTable = document.getElementById('ordersTable');
+let total = 0;
+
+cart.forEach(item => {
+    const row = document.createElement('tr');
+    const nameCell = document.createElement('td');
+    const priceCell = document.createElement('td');
+    nameCell.textContent = item.name;
+    priceCell.textContent = '£' + item.price.toFixed(2);
+    row.appendChild(nameCell);
+    row.appendChild(priceCell);
+    ordersTable.appendChild(row);
+    total += item.price;
+});
+
+document.getElementById('totalAmount').textContent = total.toFixed(2);
+
+// Logout
+function logout(){
+    localStorage.removeItem('currentUser');
+    alert('Logged out successfully!');
+    window.location.href = 'login.html';
+}
+</script>
+
+</body>
+</html>
