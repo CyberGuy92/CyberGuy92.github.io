@@ -1,52 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>My Shop</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body { font-family: Arial; margin: 0; background: #f4f4f4; }
-        header { background: #222; padding: 20px; color: #fff; text-align: center; }
-        .container { width: 90%; max-width: 1100px; margin: auto; padding: 20px; }
-        .products { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
-        .product { background: #fff; padding: 15px; border-radius: 10px; box-shadow: 0 0 10px #ccc; }
-        .product img { width: 100%; border-radius: 10px; }
-        .product button { width: 100%; padding: 10px; background: #222; color: #fff; border: none; margin-top: 10px; cursor: pointer; }
-        .product button:hover { background: #333; }
-        #cart { position: fixed; top: 20px; right: 20px; background: #222; color: #fff; padding: 10px 15px; border-radius: 10px; cursor: pointer; }
-    </style>
+<meta charset="UTF-8">
+<title>MMI Store</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  /* GENERAL STYLES */
+  body { font-family: Arial, sans-serif; margin: 0; background: #000; color: #FFD700; }
+  a { color: #FFD700; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* HEADER */
+  header { background: #111; padding: 20px; text-align: center; box-shadow: 0 2px 5px rgba(255,215,0,0.2);}
+  header h1 { margin: 0; font-size: 2em; letter-spacing: 2px; }
+
+  /* CART BUTTON */
+  #cart { position: fixed; top: 20px; right: 20px; background: #FFD700; color: #000; padding: 10px 15px; border-radius: 10px; cursor: pointer; font-weight: bold; box-shadow: 0 2px 5px rgba(255,215,0,0.5);}
+  #cart:hover { background: #e6c200; }
+
+  /* CONTAINER */
+  .container { width: 90%; max-width: 1100px; margin: auto; padding: 20px; }
+
+  /* PRODUCTS GRID */
+  .products { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+  .product { background: #111; padding: 15px; border-radius: 10px; box-shadow: 0 0 10px rgba(255,215,0,0.2); text-align: center; }
+  .product img { width: 100%; border-radius: 10px; }
+  .product h3 { margin: 10px 0 5px; font-size: 1.2em; }
+  .product p { margin: 5px 0; font-size: 1em; }
+  .product button { width: 100%; padding: 10px; background: #FFD700; color: #000; border: none; cursor: pointer; font-weight: bold; border-radius: 5px; }
+  .product button:hover { background: #e6c200; }
+
+  /* FOOTER */
+  footer { text-align: center; padding: 20px; margin-top: 20px; color: #888; font-size: 0.9em; }
+</style>
 </head>
 <body>
 
 <header>
-    <h1>My Free E-Commerce Shop</h1>
+  <h1>MMI Store</h1>
 </header>
 
 <div id="cart">Cart: <span id="cartCount">0</span></div>
 
 <div class="container">
-    <h2>Products</h2>
+  <h2>Products</h2>
+  <div class="products">
 
-    <div class="products">
-
-        <!-- PRODUCT 1 -->
-        <div class="product">
-            <img src="https://via.placeholder.com/300" alt="">
-            <h3>Sample Product 1</h3>
-            <p>£9.99</p>
-            <button onclick="addToCart('Sample Product 1', 9.99, 'prod_1')">Add to Cart</button>
-        </div>
-
-        <!-- PRODUCT 2 -->
-        <div class="product">
-            <img src="https://via.placeholder.com/300" alt="">
-            <h3>Sample Product 2</h3>
-            <p>£14.99</p>
-            <button onclick="addToCart('Sample Product 2', 14.99, 'prod_2')">Add to Cart</button>
-        </div>
-
+    <!-- PRODUCT 1 -->
+    <div class="product">
+      <img src="https://via.placeholder.com/300" alt="">
+      <h3>Sample Product 1</h3>
+      <p>£9.99</p>
+      <button onclick="addToCart('Sample Product 1', 9.99, 'prod_1')">Add to Cart</button>
     </div>
+
+    <!-- PRODUCT 2 -->
+    <div class="product">
+      <img src="https://via.placeholder.com/300" alt="">
+      <h3>Sample Product 2</h3>
+      <p>£14.99</p>
+      <button onclick="addToCart('Sample Product 2', 14.99, 'prod_2')">Add to Cart</button>
+    </div>
+
+  </div>
 </div>
+
+<footer>
+  &copy; 2025 MMI Store. All rights reserved.
+</footer>
 
 <script>
 let cart = JSON.parse(localStorage.getItem("cart") || "[]");
