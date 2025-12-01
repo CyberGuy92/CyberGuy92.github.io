@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Cart</title>
+    <style>
+        body { font-family: Arial; background: #f4f4f4; padding: 20px; }
+        .item { background: white; padding: 10px; margin: 10px 0; border-radius: 10px; }
+        button { padding: 10px 20px; background: #222; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<h1>Your Cart</h1>
+<div id="items"></div>
+<button onclick="checkout()">Checkout</button>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+
+let list = "";
+cart.forEach(i => {
+    list += `<div class="item">${i.name} – £${i.price}</div>`;
+});
+document.getElementById("items").innerHTML = list;
+
+function checkout(){
+    fetch("https://api.stripe.com/v1/checkout/sessions", {
+        method: "POST",
+        headers: {
+            "Authorization": "Bearer YOUR_SECRET_KEY",
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: new URLSearchParams({
+            "success_url": "https://yourshop.com/success",
+            "cancel_url": "https://yourshop.com/cart",
+            "mode": "payment",
+            "line_items[0][price]": "YOUR_STRIPE_PRICE_ID",
+            "line_items[0][quantity]": cart.length
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        const stripe = Stripe("YOUR_PUBLISHABLE_KEY");
+        stripe.redirectToCheckout({ sessionId: data.id });
+    });
+}
+</script>
+
+</body>
+</html>
