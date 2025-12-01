@@ -6,17 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  /* GENERAL STYLES */
   body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     background: #111 url('https://www.transparenttextures.com/patterns/carbon-fibre.png') repeat;
-    color: #d4af37; /* softer gold */
+    color: #d4af37;
   }
   a { color: #d4af37; text-decoration: none; }
   a:hover { text-decoration: underline; }
 
-  /* HEADER */
   header {
     display: flex;
     justify-content: space-between;
@@ -25,13 +23,8 @@
     background: rgba(17,17,17,0.95);
     box-shadow: 0 2px 10px rgba(212,175,55,0.2);
   }
-  header h1 {
-    margin: 0;
-    font-size: 2em;
-    letter-spacing: 2px;
-  }
+  header h1 { margin: 0; font-size: 2em; letter-spacing: 2px; }
 
-  /* DROPDOWN MENU */
   .dropdown { position: relative; display: inline-block; }
   .dropbtn {
       background-color: #d4af37;
@@ -63,10 +56,8 @@
   .dropdown-content a:hover { background-color: #222; }
   .dropdown:hover .dropdown-content { display: block; }
 
-  /* MAIN CONTAINER */
   .container { width: 90%; max-width: 1200px; margin: auto; padding: 40px 0; }
 
-  /* ABOUT US SECTION */
   .about {
     background: rgba(17,17,17,0.9);
     padding: 30px;
@@ -77,7 +68,6 @@
   .about h2 { margin-top: 0; font-size: 2em; }
   .about p { font-size: 1.1em; line-height: 1.6; }
 
-  /* PRODUCT GRID */
   .products {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -111,7 +101,6 @@
   }
   .product button:hover { background: #c19c32; }
 
-  /* FOOTER */
   footer {
     text-align: center;
     padding: 30px 20px;
@@ -128,7 +117,7 @@
 <body>
 
 <header>
-  <h1>MMI Store</h1>
+  <h1><a href="index.html" style="color:#d4af37; text-decoration:none;">MMI Store</a></h1>
   <div class="dropdown">
     <button class="dropbtn">Menu ▼</button>
     <div class="dropdown-content">
@@ -142,7 +131,6 @@
 
 <div class="container">
 
-  <!-- ABOUT US SECTION -->
   <div class="about">
     <h2>About Us</h2>
     <p>Welcome to <strong>MMI Box Company</strong>, your premium source for high-quality, customizable storage and subscription boxes. Our mission is to provide durable, stylish, and practical solutions for individuals and businesses alike. Whether you’re looking for a sleek packaging solution, a collector’s subscription box, or a custom order for your brand, MMI Boxes combine functionality with elegance.</p>
@@ -150,30 +138,29 @@
     <p>Experience the perfect blend of style, utility, and quality — discover MMI Boxes today!</p>
   </div>
 
-  <!-- FEATURED PRODUCTS -->
   <h2>Featured Products</h2>
   <div class="products">
 
-    <!-- PRODUCT 1 -->
     <div class="product">
       <img src="https://via.placeholder.com/300" alt="">
       <h3>Premium Storage Box</h3>
+      <p>A durable, stylish storage solution for your most important items.</p>
       <p>£24.99</p>
       <button onclick="addToCart('Premium Storage Box', 24.99, 'prod_1')">Add to Cart</button>
     </div>
 
-    <!-- PRODUCT 2 -->
     <div class="product">
       <img src="https://via.placeholder.com/300" alt="">
       <h3>Collector’s Box</h3>
+      <p>Perfect for keeping collectibles safe and beautifully displayed.</p>
       <p>£39.99</p>
       <button onclick="addToCart('Collector’s Box', 39.99, 'prod_2')">Add to Cart</button>
     </div>
 
-    <!-- PRODUCT 3 -->
     <div class="product">
       <img src="https://via.placeholder.com/300" alt="">
       <h3>Custom Subscription Box</h3>
+      <p>A personalized subscription box with exclusive items every month.</p>
       <p>£49.99</p>
       <button onclick="addToCart('Custom Subscription Box', 49.99, 'prod_3')">Add to Cart</button>
     </div>
@@ -192,7 +179,6 @@
 
 <script>
 let cart = JSON.parse(localStorage.getItem("cart") || "[]");
-
 function addToCart(name, price, id){
     cart.push({name, price, id});
     localStorage.setItem("cart", JSON.stringify(cart));

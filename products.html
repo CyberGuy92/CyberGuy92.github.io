@@ -6,120 +6,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  /* GENERAL STYLES */
-  body {
-    font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    background: #111 url('https://www.transparenttextures.com/patterns/carbon-fibre.png') repeat;
-    color: #d4af37; /* softer gold */
-  }
-  a { color: #d4af37; text-decoration: none; }
-  a:hover { text-decoration: underline; }
-
-  /* HEADER */
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-    background: rgba(17,17,17,0.95);
-    box-shadow: 0 2px 10px rgba(212,175,55,0.2);
-  }
-  header h1 {
-    margin: 0;
-    font-size: 2em;
-    letter-spacing: 2px;
-  }
-
-  /* DROPDOWN MENU */
-  .dropdown { position: relative; display: inline-block; }
-  .dropbtn {
-      background-color: #d4af37;
-      color: #000;
-      padding: 10px 20px;
-      font-size: 1em;
-      font-weight: 700;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-  }
-  .dropbtn:hover { background: #c19c32; }
-  .dropdown-content {
-      display: none;
-      position: absolute;
-      right: 0;
-      background-color: #111;
-      min-width: 200px;
-      box-shadow: 0 4px 10px rgba(212,175,55,0.3);
-      border-radius: 8px;
-      z-index: 1;
-  }
-  .dropdown-content a {
-      color: #d4af37;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-  }
-  .dropdown-content a:hover { background-color: #222; }
-  .dropdown:hover .dropdown-content { display: block; }
-
-  /* MAIN CONTAINER */
-  .container { width: 90%; max-width: 1200px; margin: auto; padding: 40px 0; }
-
-  /* PRODUCT GRID */
-  .products {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px;
-  }
-  .product {
-    background: rgba(17,17,17,0.9);
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(212,175,55,0.2);
-    transition: transform 0.2s, box-shadow 0.2s;
-    text-align: center;
-  }
-  .product:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(212,175,55,0.4);
-  }
-  .product img { width: 100%; border-radius: 10px; margin-bottom: 15px; }
-  .product h3 { margin: 10px 0; font-size: 1.4em; }
-  .product p { margin: 5px 0; font-size: 1.1em; }
-  .product .description { font-size: 0.95em; color: #ccc; margin: 10px 0 15px; }
-
-  .product button {
-    width: 100%;
-    padding: 12px;
-    background: #d4af37;
-    color: #000;
-    border: none;
-    cursor: pointer;
-    font-weight: 700;
-    border-radius: 8px;
-    transition: background 0.2s;
-  }
-  .product button:hover { background: #c19c32; }
-
-  /* FOOTER */
-  footer {
-    text-align: center;
-    padding: 30px 20px;
-    background: rgba(17,17,17,0.95);
-    color: #888;
-    font-size: 0.9em;
-    border-top: 1px solid #222;
-  }
-  footer a { margin: 0 10px; color: #d4af37; font-weight: 600; }
-  footer a:hover { color: #c19c32; }
-
+  body { font-family: 'Montserrat', sans-serif; margin:0; background:#111 url('https://www.transparenttextures.com/patterns/carbon-fibre.png') repeat; color:#d4af37; }
+  a { color:#d4af37; text-decoration:none; } a:hover { text-decoration:underline; }
+  header { display:flex; justify-content:space-between; align-items:center; padding:20px 40px; background:rgba(17,17,17,0.95); box-shadow:0 2px 10px rgba(212,175,55,0.2); }
+  header h1 { margin:0; font-size:2em; letter-spacing:2px; }
+  .dropdown { position:relative; display:inline-block; }
+  .dropbtn { background-color:#d4af37; color:#000; padding:10px 20px; font-size:1em; font-weight:700; border:none; border-radius:8px; cursor:pointer; }
+  .dropbtn:hover { background:#c19c32; }
+  .dropdown-content { display:none; position:absolute; right:0; background-color:#111; min-width:200px; box-shadow:0 4px 10px rgba(212,175,55,0.3); border-radius:8px; z-index:1; }
+  .dropdown-content a { color:#d4af37; padding:12px 16px; text-decoration:none; display:block; }
+  .dropdown-content a:hover { background-color:#222; }
+  .dropdown:hover .dropdown-content { display:block; }
+  .container { width:90%; max-width:1200px; margin:auto; padding:40px 0; }
+  .products { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:30px; }
+  .product { background: rgba(17,17,17,0.9); padding:20px; border-radius:15px; box-shadow:0 4px 15px rgba(212,175,55,0.2); transition:transform 0.2s, box-shadow 0.2s; text-align:center; }
+  .product:hover { transform:translateY(-5px); box-shadow:0 6px 20px rgba(212,175,55,0.4); }
+  .product img { width:100%; border-radius:10px; margin-bottom:15px; }
+  .product h3 { margin:10px 0; font-size:1.4em; }
+  .product p { margin:5px 0; font-size:1.1em; }
+  .product .description { font-size:0.95em; color:#ccc; margin:10px 0 15px; }
+  .product button { width:100%; padding:12px; background:#d4af37; color:#000; border:none; cursor:pointer; font-weight:700; border-radius:8px; transition:background 0.2s; }
+  .product button:hover { background:#c19c32; }
+  footer { text-align:center; padding:30px 20px; background:rgba(17,17,17,0.95); color:#888; font-size:0.9em; border-top:1px solid #222; }
+  footer a { margin:0 10px; color:#d4af37; font-weight:600; } footer a:hover { color:#c19c32; }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>MMI Store</h1>
+  <h1><a href="index.html" style="color:#d4af37; text-decoration:none;">MMI Store</a></h1>
   <div class="dropdown">
     <button class="dropbtn">Menu ▼</button>
     <div class="dropdown-content">
@@ -134,8 +49,6 @@
 <div class="container">
   <h2>Our Products</h2>
   <div class="products">
-
-    <!-- PRODUCT 1 -->
     <div class="product">
       <img src="https://via.placeholder.com/300" alt="">
       <h3>Premium Storage Box</h3>
@@ -143,8 +56,6 @@
       <p>£24.99</p>
       <button onclick="addToCart('Premium Storage Box', 24.99, 'prod_1')">Add to Cart</button>
     </div>
-
-    <!-- PRODUCT 2 -->
     <div class="product">
       <img src="https://via.placeholder.com/300" alt="">
       <h3>Collector’s Box</h3>
@@ -152,8 +63,6 @@
       <p>£39.99</p>
       <button onclick="addToCart('Collector’s Box', 39.99, 'prod_2')">Add to Cart</button>
     </div>
-
-    <!-- PRODUCT 3 -->
     <div class="product">
       <img src="https://via.placeholder.com/300" alt="">
       <h3>Custom Subscription Box</h3>
@@ -161,8 +70,6 @@
       <p>£49.99</p>
       <button onclick="addToCart('Custom Subscription Box', 49.99, 'prod_3')">Add to Cart</button>
     </div>
-
-    <!-- PRODUCT 4 -->
     <div class="product">
       <img src="https://via.placeholder.com/300" alt="">
       <h3>Deluxe Gift Box</h3>
@@ -170,8 +77,6 @@
       <p>£59.99</p>
       <button onclick="addToCart('Deluxe Gift Box', 59.99, 'prod_4')">Add to Cart</button>
     </div>
-
-    <!-- PRODUCT 5 -->
     <div class="product">
       <img src="https://via.placeholder.com/300" alt="">
       <h3>Mini Storage Cube</h3>
@@ -179,7 +84,6 @@
       <p>£14.99</p>
       <button onclick="addToCart('Mini Storage Cube', 14.99, 'prod_5')">Add to Cart</button>
     </div>
-
   </div>
 </div>
 
@@ -194,7 +98,6 @@
 
 <script>
 let cart = JSON.parse(localStorage.getItem("cart") || "[]");
-
 function addToCart(name, price, id){
     cart.push({name, price, id});
     localStorage.setItem("cart", JSON.stringify(cart));
