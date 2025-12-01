@@ -12,10 +12,40 @@
   a:hover { text-decoration: underline; }
 
   /* HEADER */
-  header { background: #111; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(255,215,0,0.2);}
+  header { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background: #111; box-shadow: 0 2px 10px rgba(255,215,0,0.2);}
   header h1 { margin: 0; font-size: 2em; letter-spacing: 2px; }
-  nav a { margin-left: 20px; font-weight: 600; transition: color 0.2s; }
-  nav a:hover { color: #e6c200; }
+
+  /* DROPDOWN MENU */
+  .dropdown { position: relative; display: inline-block; }
+  .dropbtn {
+      background-color: #FFD700;
+      color: #000;
+      padding: 10px 20px;
+      font-size: 1em;
+      font-weight: 700;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+  }
+  .dropbtn:hover { background: #e6c200; }
+  .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: #111;
+      min-width: 150px;
+      box-shadow: 0 4px 10px rgba(255,215,0,0.3);
+      border-radius: 8px;
+      z-index: 1;
+  }
+  .dropdown-content a {
+      color: #FFD700;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+  }
+  .dropdown-content a:hover { background-color: #222; }
+  .dropdown:hover .dropdown-content { display: block; }
 
   /* CART BUTTON */
   #cart { position: fixed; top: 20px; right: 20px; background: #FFD700; color: #000; padding: 10px 15px; border-radius: 10px; cursor: pointer; font-weight: bold; box-shadow: 0 2px 5px rgba(255,215,0,0.5);}
@@ -44,11 +74,14 @@
 
 <header>
   <h1>MMI Store</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="login.html">Login</a>
-    <a href="cart.html">Cart</a>
-  </nav>
+  <div class="dropdown">
+    <button class="dropbtn">Menu ▼</button>
+    <div class="dropdown-content">
+      <a href="index.html">Home</a>
+      <a href="login.html">Login</a>
+      <a href="cart.html">Cart</a>
+    </div>
+  </div>
 </header>
 
 <div id="cart">Cart: <span id="cartCount">0</span></div>
