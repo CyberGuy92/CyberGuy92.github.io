@@ -7,18 +7,34 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   /* GENERAL STYLES */
-  body { font-family: 'Montserrat', sans-serif; margin: 0; background: #000; color: #FFD700; }
-  a { color: #FFD700; text-decoration: none; }
+  body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    background: #111 url('https://www.transparenttextures.com/patterns/carbon-fibre.png') repeat;
+    color: #d4af37; /* softer gold */
+  }
+  a { color: #d4af37; text-decoration: none; }
   a:hover { text-decoration: underline; }
 
   /* HEADER */
-  header { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background: #111; box-shadow: 0 2px 10px rgba(255,215,0,0.2);}
-  header h1 { margin: 0; font-size: 2em; letter-spacing: 2px; }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: rgba(17,17,17,0.95);
+    box-shadow: 0 2px 10px rgba(212,175,55,0.2);
+  }
+  header h1 {
+    margin: 0;
+    font-size: 2em;
+    letter-spacing: 2px;
+  }
 
   /* DROPDOWN MENU */
   .dropdown { position: relative; display: inline-block; }
   .dropbtn {
-      background-color: #FFD700;
+      background-color: #d4af37;
       color: #000;
       padding: 10px 20px;
       font-size: 1em;
@@ -27,19 +43,19 @@
       border-radius: 8px;
       cursor: pointer;
   }
-  .dropbtn:hover { background: #e6c200; }
+  .dropbtn:hover { background: #c19c32; }
   .dropdown-content {
       display: none;
       position: absolute;
       right: 0;
       background-color: #111;
       min-width: 150px;
-      box-shadow: 0 4px 10px rgba(255,215,0,0.3);
+      box-shadow: 0 4px 10px rgba(212,175,55,0.3);
       border-radius: 8px;
       z-index: 1;
   }
   .dropdown-content a {
-      color: #FFD700;
+      color: #d4af37;
       padding: 12px 16px;
       text-decoration: none;
       display: block;
@@ -47,27 +63,55 @@
   .dropdown-content a:hover { background-color: #222; }
   .dropdown:hover .dropdown-content { display: block; }
 
-  /* CART BUTTON */
-  #cart { position: fixed; top: 20px; right: 20px; background: #FFD700; color: #000; padding: 10px 15px; border-radius: 10px; cursor: pointer; font-weight: bold; box-shadow: 0 2px 5px rgba(255,215,0,0.5);}
-  #cart:hover { background: #e6c200; }
-
   /* MAIN CONTAINER */
   .container { width: 90%; max-width: 1200px; margin: auto; padding: 40px 0; }
 
   /* PRODUCT GRID */
-  .products { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
-  .product { background: #111; padding: 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(255,215,0,0.2); transition: transform 0.2s, box-shadow 0.2s; text-align: center; }
-  .product:hover { transform: translateY(-5px); box-shadow: 0 6px 20px rgba(255,215,0,0.4); }
+  .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+  }
+  .product {
+    background: rgba(17,17,17,0.9);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(212,175,55,0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-align: center;
+  }
+  .product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(212,175,55,0.4);
+  }
   .product img { width: 100%; border-radius: 10px; margin-bottom: 15px; }
   .product h3 { margin: 10px 0; font-size: 1.4em; }
   .product p { margin: 5px 0; font-size: 1.1em; }
-  .product button { width: 100%; padding: 12px; background: #FFD700; color: #000; border: none; cursor: pointer; font-weight: 700; border-radius: 8px; transition: background 0.2s; }
-  .product button:hover { background: #e6c200; }
+  .product button {
+    width: 100%;
+    padding: 12px;
+    background: #d4af37;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    border-radius: 8px;
+    transition: background 0.2s;
+  }
+  .product button:hover { background: #c19c32; }
 
   /* FOOTER */
-  footer { text-align: center; padding: 30px 20px; background: #111; color: #888; font-size: 0.9em; border-top: 1px solid #222; }
-  footer a { margin: 0 10px; color: #FFD700; font-weight: 600; }
-  footer a:hover { color: #e6c200; }
+  footer {
+    text-align: center;
+    padding: 30px 20px;
+    background: rgba(17,17,17,0.95);
+    color: #888;
+    font-size: 0.9em;
+    border-top: 1px solid #222;
+  }
+  footer a { margin: 0 10px; color: #d4af37; font-weight: 600; }
+  footer a:hover { color: #c19c32; }
+
 </style>
 </head>
 <body>
@@ -83,8 +127,6 @@
     </div>
   </div>
 </header>
-
-<div id="cart">Cart: <span id="cartCount">0</span></div>
 
 <div class="container">
   <h2>Featured Products</h2>
@@ -127,17 +169,11 @@
 
 <script>
 let cart = JSON.parse(localStorage.getItem("cart") || "[]");
-document.getElementById("cartCount").innerText = cart.length;
 
 function addToCart(name, price, id){
     cart.push({name, price, id});
     localStorage.setItem("cart", JSON.stringify(cart));
-    document.getElementById("cartCount").innerText = cart.length;
     alert(name + " added to cart!");
-}
-
-document.getElementById("cart").onclick = () => {
-    window.location.href = "cart.html";
 }
 </script>
 
